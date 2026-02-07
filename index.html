@@ -1,0 +1,1273 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>💝 For Setayesh 💝</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Quicksand:wght@300;400;500;600&family=Great+Vibes&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        overflow: hidden;
+        font-family: "Quicksand", sans-serif;
+        background: linear-gradient(135deg, #1a0a2e, #2d1b4e, #1a0a2e);
+        color: #fff;
+      }
+
+      /* ========== FLOATING HEARTS BACKGROUND ========== */
+      .hearts-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+
+      .floating-heart {
+        position: absolute;
+        bottom: -50px;
+        font-size: 20px;
+        animation: floatUp linear infinite;
+        opacity: 0.3;
+      }
+
+      @keyframes floatUp {
+        0% {
+          transform: translateY(0) rotate(0deg) scale(1);
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(-110vh) rotate(360deg) scale(0.5);
+          opacity: 0;
+        }
+      }
+
+      /* ========== SPARKLE CURSOR ========== */
+      .sparkle {
+        position: fixed;
+        pointer-events: none;
+        font-size: 12px;
+        z-index: 9999;
+        animation: sparkleFade 0.8s forwards;
+      }
+
+      @keyframes sparkleFade {
+        0% {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(0) rotate(180deg) translateY(-30px);
+          opacity: 0;
+        }
+      }
+
+      /* ========== SCREEN 1: QUESTION ========== */
+      .screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition:
+          opacity 0.8s,
+          transform 0.8s;
+      }
+
+      .screen.hidden {
+        opacity: 0;
+        pointer-events: none;
+        transform: scale(0.9);
+      }
+
+      .cat-icon {
+        font-size: 60px;
+        animation: catBounce 2s ease-in-out infinite;
+        margin-bottom: 10px;
+      }
+
+      @keyframes catBounce {
+        0%,
+        100% {
+          transform: translateY(0) rotate(-5deg);
+        }
+        50% {
+          transform: translateY(-15px) rotate(5deg);
+        }
+      }
+
+      .cat-label {
+        font-family: "Quicksand", sans-serif;
+        font-size: 14px;
+        color: #ffb6c1;
+        margin-bottom: 20px;
+        opacity: 0.8;
+      }
+
+      .question-title {
+        font-family: "Great Vibes", cursive;
+        font-size: 64px;
+        color: #ff6b9d;
+        text-shadow:
+          0 0 30px rgba(255, 107, 157, 0.5),
+          0 0 60px rgba(255, 107, 157, 0.3);
+        margin-bottom: 10px;
+        animation: glow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow:
+            0 0 30px rgba(255, 107, 157, 0.5),
+            0 0 60px rgba(255, 107, 157, 0.3);
+        }
+        to {
+          text-shadow:
+            0 0 40px rgba(255, 107, 157, 0.8),
+            0 0 80px rgba(255, 107, 157, 0.5),
+            0 0 120px rgba(255, 107, 157, 0.3);
+        }
+      }
+
+      .question-name {
+        font-family: "Great Vibes", cursive;
+        font-size: 80px;
+        background: linear-gradient(45deg, #ff6b9d, #ff8e53, #ff6b9d, #c084fc);
+        background-size: 300% 300%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientShift 3s ease-in-out infinite;
+        margin-bottom: 50px;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .buttons-container {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+        position: relative;
+      }
+
+      .btn-yes {
+        padding: 18px 60px;
+        font-size: 24px;
+        font-family: "Dancing Script", cursive;
+        font-weight: 700;
+        background: linear-gradient(135deg, #ff6b9d, #ff8e53);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 5px 25px rgba(255, 107, 157, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-yes::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transform: rotate(45deg);
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: translateX(-100%) rotate(45deg);
+        }
+        100% {
+          transform: translateX(100%) rotate(45deg);
+        }
+      }
+
+      .btn-yes:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 35px rgba(255, 107, 157, 0.6);
+      }
+
+      .btn-no {
+        padding: 18px 60px;
+        font-size: 24px;
+        font-family: "Dancing Script", cursive;
+        font-weight: 700;
+        background: linear-gradient(135deg, #666, #888);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.15s;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      /* ========== SCREEN 2: ENVELOPE + CELEBRATION ========== */
+      .celebration-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .she-said-yes {
+        font-family: "Great Vibes", cursive;
+        font-size: 52px;
+        color: #ff6b9d;
+        margin-bottom: 30px;
+        animation: sheSaidYes 1s ease-out forwards;
+        opacity: 0;
+      }
+
+      @keyframes sheSaidYes {
+        0% {
+          opacity: 0;
+          transform: scale(0.3) rotate(-10deg);
+        }
+        60% {
+          transform: scale(1.2) rotate(3deg);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+        }
+      }
+
+      /* ========== ENVELOPE ========== */
+      .envelope-wrapper {
+        perspective: 1000px;
+        margin-bottom: 30px;
+      }
+
+      .envelope {
+        width: 320px;
+        height: 220px;
+        position: relative;
+      }
+
+      .envelope-body {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(145deg, #f5e6d3, #eddcc8);
+        border-radius: 5px;
+        position: absolute;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        border: 2px solid #d4b896;
+        z-index: 2;
+      }
+
+      .envelope-body::after {
+        content: "💌";
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        font-size: 24px;
+      }
+
+      .envelope-flap {
+        width: 0;
+        height: 0;
+        border-left: 160px solid transparent;
+        border-right: 160px solid transparent;
+        border-top: 130px solid #e8d5bf;
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: top;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+      }
+
+      .envelope-flap.open {
+        transform: rotateX(180deg);
+        z-index: 1;
+      }
+
+      .envelope-heart-seal {
+        position: absolute;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 40px;
+        z-index: 11;
+        animation: heartPulse 1s ease-in-out infinite;
+        cursor: pointer;
+        transition: opacity 0.5s;
+      }
+
+      .envelope-heart-seal.gone {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      @keyframes heartPulse {
+        0%,
+        100% {
+          transform: translateX(-50%) scale(1);
+        }
+        50% {
+          transform: translateX(-50%) scale(1.15);
+        }
+      }
+
+      /* ========== PHOTO COMING OUT ========== */
+      .photo-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 3;
+        opacity: 0;
+        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .photo-container.rise {
+        transform: translate(-50%, -280px);
+        opacity: 1;
+        z-index: 15;
+      }
+
+      .photo-frame {
+        width: 260px;
+        height: 260px;
+        background: white;
+        padding: 10px;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        transform: rotate(-3deg);
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .photo-frame:hover {
+        transform: rotate(0deg) scale(1.03);
+      }
+
+      .photo-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+      }
+
+      .photo-counter {
+        text-align: center;
+        font-family: "Dancing Script", cursive;
+        font-size: 20px;
+        color: #ffb6c1;
+        margin-top: 10px;
+      }
+
+      .click-hint {
+        font-family: "Quicksand", sans-serif;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 15px;
+        animation: hintPulse 2s ease-in-out infinite;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      @keyframes hintPulse {
+        0%,
+        100% {
+          opacity: 0.4;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      /* ========== FIREWORKS ========== */
+      .fireworks-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 3;
+      }
+
+      /* ========== CONFETTI ========== */
+      .confetti-piece {
+        position: fixed;
+        top: -20px;
+        z-index: 3;
+        pointer-events: none;
+        animation: confettiFall linear forwards;
+      }
+
+      @keyframes confettiFall {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(110vh) rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      /* ========== SCREEN 3: FULLSCREEN GALLERY ========== */
+      .gallery-screen {
+        background: rgba(10, 5, 20, 0.97);
+        z-index: 50;
+      }
+
+      .gallery-photo {
+        max-width: 80vw;
+        max-height: 65vh;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(255, 107, 157, 0.3);
+        animation: photoIn 0.6s ease-out;
+        cursor: pointer;
+      }
+
+      @keyframes photoIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.7) rotate(-5deg);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+        }
+      }
+
+      .gallery-counter {
+        font-family: "Dancing Script", cursive;
+        font-size: 28px;
+        color: #ff6b9d;
+        margin-top: 20px;
+      }
+
+      .gallery-hint {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 10px;
+        animation: hintPulse 2s ease-in-out infinite;
+      }
+
+      /* ========== SCREEN 4: NOTE ========== */
+      .note-screen {
+        background: rgba(10, 5, 20, 0.97);
+        z-index: 60;
+        overflow-y: auto;
+      }
+
+      .note-paper {
+        width: 500px;
+        max-width: 90vw;
+        background: linear-gradient(to bottom, #fdf6e3, #f5e6c8);
+        color: #4a3728;
+        border-radius: 8px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .note-paper::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          transparent,
+          transparent 27px,
+          #e8d5bf 28px
+        );
+        opacity: 0.3;
+        pointer-events: none;
+      }
+
+      .note-fold-0 {
+        height: 60px;
+        padding: 15px 25px;
+      }
+
+      .note-fold-1 {
+        height: 120px;
+        padding: 20px 25px;
+      }
+
+      .note-fold-2 {
+        height: 200px;
+        padding: 20px 25px;
+      }
+
+      .note-fold-3 {
+        height: auto;
+        max-height: 75vh;
+        overflow-y: auto;
+        padding: 30px 35px;
+      }
+
+      .note-fold-instruction {
+        font-family: "Dancing Script", cursive;
+        font-size: 18px;
+        color: #8b6914;
+        text-align: center;
+      }
+
+      .note-content {
+        font-family: "Dancing Script", cursive;
+        font-size: 18px;
+        line-height: 1.8;
+        display: none;
+        width: 100%;
+        overflow-x: hidden;
+      }
+
+      .note-fold-3 .note-content {
+        display: block;
+        animation: noteReveal 1s ease-out;
+      }
+
+      @keyframes noteReveal {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .note-content h2 {
+        font-family: "Great Vibes", cursive;
+        font-size: 32px;
+        color: #c0392b;
+        margin-bottom: 15px;
+        text-align: center;
+      }
+
+      .note-content .reasons-title {
+        font-weight: 600;
+        color: #8b4513;
+        font-size: 20px;
+        margin: 10px 0 5px;
+      }
+
+      .note-content .reason-item {
+        padding: 3px 0 3px 0;
+      }
+
+      .note-content .reason-item::before {
+        content: "💝";
+        margin-right: 8px;
+        font-size: 12px;
+        position: static;
+      }
+
+      .note-content .sweet-text {
+        margin: 15px 0;
+        font-size: 19px;
+        color: #5d3a1a;
+      }
+
+      .note-content .ending {
+        text-align: center;
+        font-family: "Great Vibes", cursive;
+        font-size: 36px;
+        color: #c0392b;
+        margin-top: 20px;
+      }
+
+      .note-content .booos {
+        text-align: center;
+        font-size: 28px;
+        margin-top: 10px;
+        animation: heartPulse 1s ease-in-out infinite;
+        display: block;
+        width: 100%;
+        position: relative;
+        left: 0;
+        padding: 0;
+        margin-left: 0;
+        margin-right: 0;
+      }
+
+      .note-paper::-webkit-scrollbar {
+        width: 6px;
+      }
+
+      .note-paper::-webkit-scrollbar-thumb {
+        background: #d4a76a;
+        border-radius: 3px;
+      }
+
+      .note-click-hint {
+        font-family: "Quicksand", sans-serif;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 15px;
+        animation: hintPulse 2s ease-in-out infinite;
+      }
+
+      /* ========== PARTY EMOJIS ========== */
+      .party-emoji {
+        position: fixed;
+        font-size: 40px;
+        z-index: 4;
+        pointer-events: none;
+        animation: partyPop 1s ease-out forwards;
+      }
+
+      @keyframes partyPop {
+        0% {
+          transform: scale(0) rotate(0deg);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.5) rotate(180deg);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      /* ========== STARS TWINKLING ========== */
+      .star {
+        position: fixed;
+        width: 3px;
+        height: 3px;
+        background: white;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 1;
+        animation: twinkle 3s ease-in-out infinite;
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.2;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.5);
+        }
+      }
+
+      /* ========== RESPONSIVE ========== */
+      @media (max-width: 600px) {
+        .question-title {
+          font-size: 40px;
+        }
+        .question-name {
+          font-size: 52px;
+        }
+        .btn-yes,
+        .btn-no {
+          padding: 14px 40px;
+          font-size: 20px;
+        }
+        .envelope {
+          width: 260px;
+          height: 180px;
+        }
+        .envelope-flap {
+          border-left: 130px solid transparent;
+          border-right: 130px solid transparent;
+          border-top: 110px solid #e8d5bf;
+        }
+        .photo-frame {
+          width: 200px;
+          height: 200px;
+        }
+        .she-said-yes {
+          font-size: 36px;
+        }
+        .note-paper {
+          width: 95vw;
+        }
+        .note-content {
+          font-size: 16px;
+        }
+        .note-content h2 {
+          font-size: 26px;
+        }
+        .note-content .ending {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- STARS -->
+    <div id="stars"></div>
+
+    <!-- FLOATING HEARTS -->
+    <div class="hearts-bg" id="heartsBg"></div>
+
+    <!-- ==================== SCREEN 1: THE QUESTION ==================== -->
+    <div class="screen" id="questionScreen">
+      <div class="cat-icon">🐱</div>
+      <div class="cat-label">dokhtar khanoom approves this message</div>
+      <div class="question-title">Will you be my Valentine?</div>
+      <div class="question-name">Setayesh ✨</div>
+      <div class="buttons-container">
+        <button class="btn-yes" id="btnYes" onclick="sayYes()">Yes! 💖</button>
+        <button class="btn-no" id="btnNo">No 😢</button>
+      </div>
+    </div>
+
+    <!-- ==================== SCREEN 2: CELEBRATION + ENVELOPE ==================== -->
+    <div class="screen hidden" id="celebrationScreen">
+      <canvas class="fireworks-canvas" id="fireworksCanvas"></canvas>
+      <div class="celebration-container">
+        <div class="she-said-yes" id="sheSaidYes">She said Yes! 🎉</div>
+        <div class="envelope-wrapper">
+          <div class="envelope" id="envelope">
+            <div class="envelope-body"></div>
+            <div class="envelope-flap" id="envelopeFlap"></div>
+            <div
+              class="envelope-heart-seal"
+              id="heartSeal"
+              onclick="openEnvelope()"
+            >
+              💗
+            </div>
+            <div class="photo-container" id="photoContainer">
+              <div class="photo-frame" id="photoFrame" onclick="openGallery()">
+                <!-- REPLACE src WITH YOUR FIRST PHOTO -->
+                <img id="envelopePhoto" src="photo1.jpg" alt="Us 💕" />
+              </div>
+              <div class="photo-counter" id="photoCounter"></div>
+            </div>
+          </div>
+        </div>
+        <div class="click-hint" id="envelopeHint">
+          <span>👆</span> Click the heart to open
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== SCREEN 3: GALLERY ==================== -->
+    <div class="screen hidden gallery-screen" id="galleryScreen">
+      <img
+        class="gallery-photo"
+        id="galleryPhoto"
+        src="photo1.jpg"
+        alt="Our memories"
+        onclick="nextPhoto()"
+      />
+      <div class="gallery-counter" id="galleryCounter">1 / 10</div>
+      <div class="gallery-hint">✨ click the photo for the next memory ✨</div>
+    </div>
+
+    <!-- ==================== SCREEN 4: THE NOTE ==================== -->
+    <div class="screen hidden note-screen" id="noteScreen">
+      <div class="note-paper" id="notePaper" onclick="unfoldNote()">
+        <div class="note-fold-instruction" id="foldInstruction">
+          📜 click to unfold...
+        </div>
+        <div class="note-content" id="noteContent">
+          <h2>Hey You 💌</h2>
+          <p class="sweet-text">
+            heyyyyy this is my official request for you to be my valentine:
+          </p>
+
+          <p class="reasons-title">
+            reasons to accept
+            <span style="font-size: 14px"
+              >(you clicked yes if you are here already but i wanted to still
+              give you reasons to know why choosing yes was a good idea)</span
+            >
+          </p>
+
+          <div class="reason-item">tall handsome young fella</div>
+          <div class="reason-item">very talented</div>
+          <div class="reason-item">super smart</div>
+          <div class="reason-item">funny af</div>
+          <div class="reason-item">
+            types fast (so good with his hands iykyk 😏)
+          </div>
+          <div class="reason-item">very caring</div>
+          <div class="reason-item">down for any activity you say</div>
+
+          <p class="sweet-text" style="margin-top: 20px">
+            and many more things i just can't fit in one note
+          </p>
+
+          <p class="sweet-text">but let me tell you this...</p>
+
+          <p class="sweet-text">
+            i think you are even better than me in any of these things
+          </p>
+
+          <p class="sweet-text">
+            i think you're extremely smart and supppppperrrrr funny
+          </p>
+
+          <p class="sweet-text">
+            You're pretty as fuck and stylish and super hot hehe 🔥
+          </p>
+
+          <p class="sweet-text">
+            you know what you are doing, and you're good at it too
+          </p>
+
+          <p class="sweet-text">
+            and always try to help me, which I appreciate very much 🤍
+          </p>
+
+          <p class="sweet-text" style="margin-top: 25px">
+            i love all the time we spend together, i love how i am happy around
+            you
+          </p>
+
+          <p class="sweet-text">
+            i love how your little acts are cute, and i love how you never know
+            where we should go 😂
+          </p>
+
+          <p class="sweet-text" style="font-size: 21px; margin-top: 25px">
+            so yeah you're the perfect Valentine for me
+          </p>
+
+          <p class="ending">i love you soooooo soooo much</p>
+          <div
+            style="
+              text-align: center;
+              font-size: 28px;
+              margin-top: 10px;
+              clear: both;
+            "
+          >
+            booooos 😘💋💖
+          </div>
+          <p style="text-align: center; margin-top: 15px; font-size: 40px">
+            🐱💕
+          </p>
+          <p
+            style="
+              text-align: center;
+              font-size: 14px;
+              color: #a08060;
+              margin-top: 5px;
+            "
+          >
+            — dokhtar khanoom sends purrs too —
+          </p>
+        </div>
+      </div>
+      <div class="note-click-hint" id="noteHint">tap to unfold the note 💌</div>
+    </div>
+
+    <script>
+      // ==================== STARS ====================
+      (function createStars() {
+        const container = document.getElementById("stars");
+        for (let i = 0; i < 80; i++) {
+          const star = document.createElement("div");
+          star.className = "star";
+          star.style.left = Math.random() * 100 + "%";
+          star.style.top = Math.random() * 100 + "%";
+          star.style.animationDelay = Math.random() * 3 + "s";
+          star.style.animationDuration = 2 + Math.random() * 3 + "s";
+          document.body.appendChild(star);
+        }
+      })();
+
+      // ==================== FLOATING HEARTS ====================
+      (function createFloatingHearts() {
+        const container = document.getElementById("heartsBg");
+        const hearts = ["💕", "💗", "💖", "💓", "❤️", "🩷", "🤍", "✨"];
+        setInterval(() => {
+          const heart = document.createElement("div");
+          heart.className = "floating-heart";
+          heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+          heart.style.left = Math.random() * 100 + "%";
+          heart.style.fontSize = 15 + Math.random() * 25 + "px";
+          heart.style.animationDuration = 6 + Math.random() * 8 + "s";
+          container.appendChild(heart);
+          setTimeout(() => heart.remove(), 14000);
+        }, 400);
+      })();
+
+      // ==================== SPARKLE CURSOR ====================
+      document.addEventListener("mousemove", (e) => {
+        if (Math.random() > 0.7) {
+          const sparkle = document.createElement("div");
+          sparkle.className = "sparkle";
+          sparkle.textContent = ["✨", "💖", "⭐", "💗"][
+            Math.floor(Math.random() * 4)
+          ];
+          sparkle.style.left = e.clientX + "px";
+          sparkle.style.top = e.clientY + "px";
+          document.body.appendChild(sparkle);
+          setTimeout(() => sparkle.remove(), 800);
+        }
+      });
+
+      // ==================== NO BUTTON ESCAPE ====================
+      const btnNo = document.getElementById("btnNo");
+      let noEscaped = false;
+
+      function moveNoButton() {
+        if (!noEscaped) {
+          noEscaped = true;
+          btnNo.style.position = "fixed";
+          btnNo.style.zIndex = "100";
+        }
+        const maxX = window.innerWidth - btnNo.offsetWidth - 20;
+        const maxY = window.innerHeight - btnNo.offsetHeight - 20;
+        const newX = Math.random() * maxX;
+        const newY = Math.random() * maxY;
+        btnNo.style.left = newX + "px";
+        btnNo.style.top = newY + "px";
+      }
+
+      btnNo.addEventListener("mouseenter", moveNoButton);
+      btnNo.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        moveNoButton();
+      });
+
+      // ==================== YES BUTTON ====================
+      function sayYes() {
+        const questionScreen = document.getElementById("questionScreen");
+        const celebrationScreen = document.getElementById("celebrationScreen");
+
+        questionScreen.classList.add("hidden");
+        setTimeout(() => {
+          celebrationScreen.classList.remove("hidden");
+          startFireworks();
+          launchConfetti();
+          spawnPartyEmojis();
+        }, 500);
+      }
+
+      // ==================== FIREWORKS ====================
+      const canvas = document.getElementById("fireworksCanvas");
+      const ctx = canvas.getContext("2d");
+      let fireworksActive = false;
+
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+
+      class Particle {
+        constructor(x, y, color) {
+          this.x = x;
+          this.y = y;
+          this.color = color;
+          const angle = Math.random() * Math.PI * 2;
+          const speed = Math.random() * 5 + 2;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = Math.sin(angle) * speed;
+          this.alpha = 1;
+          this.decay = Math.random() * 0.02 + 0.015;
+          this.size = Math.random() * 3 + 1;
+        }
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.vy += 0.05;
+          this.alpha -= this.decay;
+        }
+        draw() {
+          ctx.save();
+          ctx.globalAlpha = this.alpha;
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      let particles = [];
+      const fwColors = [
+        "#ff6b9d",
+        "#ff8e53",
+        "#ffd700",
+        "#ff69b4",
+        "#c084fc",
+        "#67e8f9",
+        "#fb7185",
+        "#fbbf24",
+      ];
+
+      function createFirework() {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height * 0.5;
+        const color = fwColors[Math.floor(Math.random() * fwColors.length)];
+        for (let i = 0; i < 60; i++) {
+          particles.push(new Particle(x, y, color));
+        }
+      }
+
+      function animateFireworks() {
+        if (!fireworksActive) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles = particles.filter((p) => p.alpha > 0);
+        particles.forEach((p) => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(animateFireworks);
+      }
+
+      function startFireworks() {
+        fireworksActive = true;
+        animateFireworks();
+        for (let i = 0; i < 5; i++) {
+          setTimeout(createFirework, i * 300);
+        }
+        const fwInterval = setInterval(() => {
+          if (!fireworksActive) {
+            clearInterval(fwInterval);
+            return;
+          }
+          createFirework();
+        }, 800);
+        setTimeout(() => {
+          fireworksActive = false;
+          clearInterval(fwInterval);
+        }, 8000);
+      }
+
+      // ==================== CONFETTI ====================
+      function launchConfetti() {
+        const confettiColors = [
+          "#ff6b9d",
+          "#ffd700",
+          "#ff8e53",
+          "#c084fc",
+          "#67e8f9",
+          "#fb7185",
+          "#34d399",
+          "#fbbf24",
+        ];
+        const shapes = ["■", "●", "▲", "★", "💖"];
+        for (let i = 0; i < 80; i++) {
+          setTimeout(() => {
+            const piece = document.createElement("div");
+            piece.className = "confetti-piece";
+            piece.textContent =
+              shapes[Math.floor(Math.random() * shapes.length)];
+            piece.style.left = Math.random() * 100 + "%";
+            piece.style.color =
+              confettiColors[Math.floor(Math.random() * confettiColors.length)];
+            piece.style.fontSize = 10 + Math.random() * 15 + "px";
+            piece.style.animationDuration = 3 + Math.random() * 4 + "s";
+            document.body.appendChild(piece);
+            setTimeout(() => piece.remove(), 7000);
+          }, Math.random() * 3000);
+        }
+      }
+
+      // ==================== PARTY EMOJIS ====================
+      function spawnPartyEmojis() {
+        const emojis = [
+          "🎉",
+          "🥳",
+          "🎊",
+          "💃",
+          "🕺",
+          "🎆",
+          "🎇",
+          "🍾",
+          "🥂",
+          "💖",
+        ];
+        for (let i = 0; i < 15; i++) {
+          setTimeout(() => {
+            const emoji = document.createElement("div");
+            emoji.className = "party-emoji";
+            emoji.textContent =
+              emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 80 + 10 + "%";
+            emoji.style.top = Math.random() * 80 + 10 + "%";
+            emoji.style.fontSize = 30 + Math.random() * 30 + "px";
+            document.body.appendChild(emoji);
+            setTimeout(() => emoji.remove(), 1000);
+          }, i * 400);
+        }
+      }
+
+      // ==================== ENVELOPE ====================
+      let envelopeOpened = false;
+
+      function openEnvelope() {
+        if (envelopeOpened) return;
+        envelopeOpened = true;
+
+        const flap = document.getElementById("envelopeFlap");
+        const seal = document.getElementById("heartSeal");
+        const photoContainer = document.getElementById("photoContainer");
+        const hint = document.getElementById("envelopeHint");
+
+        seal.classList.add("gone");
+        flap.classList.add("open");
+
+        hint.innerHTML = "✨ The envelope is opening... ✨";
+
+        setTimeout(() => {
+          photoContainer.classList.add("rise");
+          hint.innerHTML = "👆 Click the photo to see all our memories";
+          document.getElementById("photoCounter").textContent = "Photo 1 of 10";
+        }, 1000);
+      }
+
+      // ==================== GALLERY ====================
+      // REPLACE THESE WITH YOUR ACTUAL PHOTO FILENAMES
+      const photos = [
+        "photo1.jpg",
+        "photo2.jpg",
+        "photo3.jpg",
+        "photo4.jpg",
+        "photo5.jpg",
+        "photo6.jpg",
+        "photo7.jpg",
+        "photo8.jpg",
+        "photo9.jpg",
+        "photo10.jpg",
+      ];
+
+      let currentPhoto = 0;
+
+      function openGallery() {
+        currentPhoto = 0;
+        document.getElementById("celebrationScreen").classList.add("hidden");
+        const galleryScreen = document.getElementById("galleryScreen");
+        galleryScreen.classList.remove("hidden");
+        updateGalleryPhoto();
+      }
+
+      function updateGalleryPhoto() {
+        const img = document.getElementById("galleryPhoto");
+        const counter = document.getElementById("galleryCounter");
+
+        img.style.animation = "none";
+        img.offsetHeight;
+        img.style.animation = "photoIn 0.6s ease-out";
+
+        img.src = photos[currentPhoto];
+        counter.textContent = `${currentPhoto + 1} / 10  💕`;
+
+        if (currentPhoto === 9) {
+          document.querySelector(".gallery-hint").textContent =
+            "✨ click for a special note ✨";
+        } else {
+          document.querySelector(".gallery-hint").textContent =
+            "✨ click the photo for the next memory ✨";
+        }
+      }
+
+      function nextPhoto() {
+        currentPhoto++;
+        if (currentPhoto >= 10) {
+          document.getElementById("galleryScreen").classList.add("hidden");
+          showNoteScreen();
+          return;
+        }
+        updateGalleryPhoto();
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            const piece = document.createElement("div");
+            piece.className = "confetti-piece";
+            piece.textContent = ["💖", "✨", "💕"][
+              Math.floor(Math.random() * 3)
+            ];
+            piece.style.left = Math.random() * 100 + "%";
+            piece.style.fontSize = "14px";
+            piece.style.animationDuration = 2 + Math.random() * 2 + "s";
+            document.body.appendChild(piece);
+            setTimeout(() => piece.remove(), 4000);
+          }, i * 100);
+        }
+      }
+
+      // ==================== NOTE ====================
+      let noteFold = 0;
+
+      function showNoteScreen() {
+        noteFold = 0;
+        const noteScreen = document.getElementById("noteScreen");
+        const notePaper = document.getElementById("notePaper");
+        noteScreen.classList.remove("hidden");
+        notePaper.className = "note-paper note-fold-0";
+        document.getElementById("foldInstruction").textContent =
+          "📜 click to unfold...";
+        document.getElementById("foldInstruction").style.display = "block";
+        document.getElementById("noteContent").style.display = "none";
+        document.getElementById("noteHint").textContent =
+          "tap to unfold the note 💌";
+      }
+
+      function unfoldNote() {
+        noteFold++;
+        const notePaper = document.getElementById("notePaper");
+        const instruction = document.getElementById("foldInstruction");
+        const hint = document.getElementById("noteHint");
+
+        if (noteFold === 1) {
+          notePaper.className = "note-paper note-fold-1";
+          instruction.textContent = "📜 keep going... click again...";
+          hint.textContent = "almost there... click again 💌";
+        } else if (noteFold === 2) {
+          notePaper.className = "note-paper note-fold-2";
+          instruction.textContent = "📜 one more click...";
+          hint.textContent = "one more click! 💖";
+        } else if (noteFold === 3) {
+          notePaper.className = "note-paper note-fold-3";
+          instruction.style.display = "none";
+          document.getElementById("noteContent").style.display = "block";
+          hint.textContent = "";
+          launchConfetti();
+          setTimeout(() => spawnPartyEmojis(), 500);
+        }
+      }
+    </script>
+  </body>
+</html>
