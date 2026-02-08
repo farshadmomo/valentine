@@ -734,10 +734,76 @@
         .note-content .ending {
           font-size: 28px;
         }
+        .final-screen {
+          background: radial-gradient(ellipse at center, #2d1b4e, #1a0a2e);
+          z-index: 70;
+          flex-direction: column;
+        }
+
+        .final-heart {
+          font-size: 80px;
+          animation: heartPulse 1s ease-in-out infinite;
+          margin-bottom: 20px;
+        }
+
+        .final-names {
+          font-family: "Great Vibes", cursive;
+          font-size: 60px;
+          background: linear-gradient(45deg, #ff6b9d, #ffd700, #ff6b9d);
+          background-size: 200% 200%;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          animation: gradientShift 3s ease-in-out infinite;
+          margin-bottom: 15px;
+          text-align: center;
+        }
+
+        .final-text {
+          font-family: "Great Vibes", cursive;
+          font-size: 42px;
+          color: #ff6b9d;
+          margin-bottom: 10px;
+          animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        .final-year {
+          font-family: "Dancing Script", cursive;
+          font-size: 28px;
+          color: #c084fc;
+          margin-bottom: 15px;
+        }
+
+        .final-forever {
+          font-family: "Dancing Script", cursive;
+          font-size: 24px;
+          color: #ffb6c1;
+          margin-bottom: 30px;
+          opacity: 0.8;
+        }
+
+        .final-cat {
+          font-family: "Quicksand", sans-serif;
+          font-size: 16px;
+          color: #ffb6c1;
+          opacity: 0.7;
+          animation: catBounce 2s ease-in-out infinite;
+        }
+
+        @media (max-width: 600px) {
+          .final-names {
+            font-size: 38px;
+          }
+          .final-text {
+            font-size: 30px;
+          }
+        }
       }
     </style>
   </head>
   <body>
+    <audio id="bgMusic" loop preload="auto">
+      <source src="song.mp3" type="audio/mpeg" />
+    </audio>
     <!-- STARS -->
     <div id="stars"></div>
 
@@ -765,13 +831,7 @@
           <div class="envelope" id="envelope">
             <div class="envelope-body"></div>
             <div class="envelope-flap" id="envelopeFlap"></div>
-            <div
-              class="envelope-heart-seal"
-              id="heartSeal"
-              onclick="openEnvelope()"
-            >
-              💗
-            </div>
+            <div class="envelope-heart-seal" id="heartSeal">💗</div>
             <div class="photo-container" id="photoContainer">
               <div class="photo-frame" id="photoFrame" onclick="openGallery()">
                 <!-- REPLACE src WITH YOUR FIRST PHOTO -->
@@ -899,6 +959,16 @@
       <div class="note-click-hint" id="noteHint">tap to unfold the note 💌</div>
     </div>
 
+    <!-- ==================== SCREEN 5: FINAL SCREEN ==================== -->
+    <div class="screen hidden final-screen" id="finalScreen">
+      <div class="final-heart">💖</div>
+      <div class="final-names">Setayesh & Farshad</div>
+      <div class="final-text">Happy Valentine's Day</div>
+      <div class="final-year">2025</div>
+      <div class="final-forever">forever & always 💕</div>
+      <div class="final-cat">🐱 dokhtar khanoom was here too</div>
+    </div>
+
     <script>
       // ==================== STARS ====================
       (function createStars() {
@@ -973,6 +1043,18 @@
       function sayYes() {
         const questionScreen = document.getElementById("questionScreen");
         const celebrationScreen = document.getElementById("celebrationScreen");
+
+        const music = document.getElementById("bgMusic");
+        music.volume = 0.5;
+
+        // Keep trying to play music in case it gets interrupted
+        function keepMusicPlaying() {
+          if (music.paused) {
+            music.play().catch(() => {});
+          }
+        }
+        setInterval(keepMusicPlaying, 1000);
+        music.play().catch(() => {});
 
         questionScreen.classList.add("hidden");
         setTimeout(() => {
@@ -1138,6 +1220,14 @@
       // ==================== ENVELOPE ====================
       let envelopeOpened = false;
 
+      document
+        .getElementById("heartSeal")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          openEnvelope();
+        });
+
       function openEnvelope() {
         if (envelopeOpened) return;
         envelopeOpened = true;
@@ -1266,7 +1356,28 @@
           hint.textContent = "";
           launchConfetti();
           setTimeout(() => spawnPartyEmojis(), 500);
+
+          // STOP CLICKING FROM DOING MORE UNFOLDS
+          notePaper.onclick = null;
+
+          // ADD A "CONTINUE" BUTTON AFTER A DELAY
+          setTimeout(() => {
+            hint.innerHTML =
+              '<span style="cursor:pointer; background:linear-gradient(135deg,#ff6b9d,#ff8e53); padding:12px 30px; border-radius:50px; font-family:Dancing Script; font-size:20px; color:white;" onclick="showFinalScreen()">one last thing... 💕</span>';
+            hint.style.opacity = "1";
+          }, 3000);
         }
+      }
+
+      function showFinalScreen() {
+        document.getElementById("noteScreen").classList.add("hidden");
+        setTimeout(() => {
+          document.getElementById("finalScreen").classList.remove("hidden");
+          launchConfetti();
+          setTimeout(() => launchConfetti(), 2000);
+          spawnPartyEmojis();
+          setTimeout(() => spawnPartyEmojis(), 1500);
+        }, 500);
       }
     </script>
   </body>
